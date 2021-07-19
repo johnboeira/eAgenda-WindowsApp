@@ -380,6 +380,7 @@ namespace eAgenda.WindowsApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTarefa";
             this.Text = "Tela Tarefa";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmTarefa_FormClosing);
             this.Load += new System.EventHandler(this.FrmTarefa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtTarefa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBTarefaBindingSource)).EndInit();

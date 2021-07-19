@@ -178,5 +178,11 @@ namespace eAgenda.WindowsApp
         {
            
         }
+
+        private void FrmTarefa_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            telaPrincipal.Show();
+        }
     }
 }

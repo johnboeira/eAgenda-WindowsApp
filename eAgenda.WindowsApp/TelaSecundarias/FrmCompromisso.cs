@@ -18,6 +18,7 @@ namespace eAgenda.WindowsApp
     {
         ControladorCompromisso controladorCompromisso;
         ControladorContato controladorContato;
+        int idCompromissoSelecionado = 0;
         public FrmCompromisso()
         {
             controladorCompromisso = new ControladorCompromisso();
@@ -36,18 +37,15 @@ namespace eAgenda.WindowsApp
         {
             try
             {
-
                 this.tBCONTATOTableAdapter.Fill(this.dBeAgendaDataSet.TBCONTATO);
-
                 this.tBCOMPROMISSOTableAdapter.Fill(this.dBeAgendaDataSet.TBCOMPROMISSO);
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro:" + ex.Message);
             }
         }
-     
+
         private void HabilitarCampos()
         {
             txtAssunto.Enabled = true;
@@ -100,7 +98,7 @@ namespace eAgenda.WindowsApp
             DesabilitarBtnSalvar();
             DesabilitarBtnEditar();
             DesabilitarBtnExcluir();
-        }     
+        }
 
         private void LimparCampos()
         {
@@ -125,31 +123,45 @@ namespace eAgenda.WindowsApp
                 TimeSpan horaInicio = new TimeSpan(dtInicio.Hour, dtInicio.Minute, dtInicio.Second);
                 DateTime dtTermino = tmTermino.Value;
                 TimeSpan horaTermino = new TimeSpan(dtTermino.Hour, dtTermino.Minute, dtTermino.Second);
-                Contato contato =controladorContato.SelecionarPorId(Convert.ToInt32(cbContato.SelectedValue));
-                Compromisso compromisso = new Compromisso(assunto,local,link,data,  horaInicio, horaTermino, contato);
-                controladorCompromisso.InserirNovo(compromisso);
-                MessageBox.Show("Adicionado");
+                Contato contato = controladorContato.SelecionarPorId(Convert.ToInt32(cbContato.SelectedValue));
+                Compromisso compromisso = new Compromisso(assunto, local, link, data, horaInicio, horaTermino, contato);
+                string validar = controladorCompromisso.InserirNovo(compromisso);
+                if (validar == "ESTA_VALIDO")
+                {
+                    MessageBox.Show("Inserido com sucesso", "Inserção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    throw new FormatException();
+                }
+                
             }
             catch (Exception ex)
-            {
-                MessageBox.Show("Erro:" + ex.Message);
+            {           
+                MessageBox.Show(ex.Message, "Erro ao inserir", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             AtualizarDadosDataGrid();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             try
-            {
-                int id = Convert.ToInt32(txtId.Text);
-                controladorCompromisso.Excluir(id);
+            {              
+                bool validado = controladorCompromisso.Excluir(idCompromissoSelecionado);
+                if (validado)
+                {
+                    MessageBox.Show("Excluido com sucesso", "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro:" + ex.Message);
-            }
-            MessageBox.Show("Excluido");
+                MessageBox.Show(ex.Message, "Erro ao excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }          
             AtualizarDadosDataGrid();
         }
 
@@ -157,18 +169,30 @@ namespace eAgenda.WindowsApp
         {
             try
             {
-                //HabilitarCampos();
-                //int id = Convert.ToInt32(txtId.Text);
-                //Tarefa tarefa = controladorTarefa.SelecionarPorId(id);
-                //string titulo = txtTitulo.Text;
-                //int percentual = Convert.ToInt32(txtPercentual.Text);
-                //int prioridade = Convert.ToInt32(txtPrioridade.Text);
-                //Tarefa tarefaNova = new Tarefa(titulo, tarefa.DataCriacao, tarefa.DataConclusao, (PrioridadeEnum)prioridade, percentual);
-                //controladorTarefa.Editar(id, tarefaNova);
+                HabilitarCampos();
+                string assunto = txtAssunto.Text;
+                string local = txtLocal.Text;
+                string link = txtLink.Text;
+                DateTime data = dtData.Value;
+                DateTime dtInicio = tmInicio.Value;
+                TimeSpan horaInicio = new TimeSpan(dtInicio.Hour, dtInicio.Minute, dtInicio.Second);
+                DateTime dtTermino = tmTermino.Value;
+                TimeSpan horaTermino = new TimeSpan(dtTermino.Hour, dtTermino.Minute, dtTermino.Second);
+                Contato contato = controladorContato.SelecionarPorId(Convert.ToInt32(cbContato.SelectedValue));
+                Compromisso compromissoNovo = new Compromisso(assunto, local, link, data, horaInicio, horaTermino, contato);
+                string valido = controladorCompromisso.Editar(idCompromissoSelecionado, compromissoNovo);
+                if (valido == "ESTA_VALIDO")
+                {
+                    MessageBox.Show("Editado com sucesso", "Edição", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro:" + ex.Message);
+                MessageBox.Show(ex.Message, "Erro ao editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             MessageBox.Show("Editado");
             AtualizarDadosDataGrid();
@@ -177,7 +201,7 @@ namespace eAgenda.WindowsApp
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             LimparCampos();
-            HabilitarCampos();       
+            HabilitarCampos();
             DesabilitarTodosBtns();
             HabilitarBtnSalvar();
         }
@@ -188,13 +212,31 @@ namespace eAgenda.WindowsApp
             DesabilitarTodosBtns();
             HabilitarBtnEditar();
             HabilitarBtnExcluir();
-            txtAssunto.Text = dgCompromisso.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtLocal.Text = dgCompromisso.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtLink.Text = dgCompromisso.Rows[e.RowIndex].Cells[2].Value.ToString();
-            dtData.Value = (DateTime)dgCompromisso.Rows[e.RowIndex].Cells[3].Value;
-            //tmInicio.Value = (DateTime)dgCompromisso.Rows[e.RowIndex].Cells[4].Value;
-            //tmTermino.Value = (DateTime)dgCompromisso.Rows[e.RowIndex].Cells[5].Value;
-            txtId.Text = dgCompromisso.Rows[e.RowIndex].Cells[6].Value.ToString();
+            
+            try
+            {
+                //pega id do compromisso pelo
+                idCompromissoSelecionado = Convert.ToInt32(dgCompromisso.Rows[e.RowIndex].Cells[6].Value.ToString());
+                Compromisso compromisso = controladorCompromisso.SelecionarPorId(idCompromissoSelecionado);
+                tmInicio.Value = Convert.ToDateTime(compromisso.HoraInicio.ToString());
+                tmTermino.Value = Convert.ToDateTime(compromisso.HoraTermino.ToString());
+                txtAssunto.Text = compromisso.Assunto;
+                txtLocal.Text = compromisso.Local;
+                txtLink.Text = compromisso.Link;
+                dtData.Value = compromisso.Data;
+                cbContato.SelectedValue = compromisso.Contato.Id;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Erro ao popular campos: ", MessageBoxButtons.OK, MessageBoxIcon.Error);            
+            }
+        }
+
+        private void FrmCompromisso_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            telaPrincipal.Show();
         }
     }
 }

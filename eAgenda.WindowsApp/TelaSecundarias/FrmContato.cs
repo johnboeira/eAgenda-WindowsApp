@@ -186,5 +186,11 @@ namespace eAgenda.WindowsApp
             txtId.Text = dgContato.Rows[e.RowIndex].Cells[5].Value.ToString();
 
         }
+
+        private void FrmContato_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            telaPrincipal.Show();
+        }
     }
 }

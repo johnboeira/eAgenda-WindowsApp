@@ -494,6 +494,7 @@ namespace eAgenda.WindowsApp
             this.Name = "FrmCompromisso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Compromisso";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCompromisso_FormClosing);
             this.Load += new System.EventHandler(this.FrmCompromisso_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgCompromisso)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBCOMPROMISSOBindingSource1)).EndInit();

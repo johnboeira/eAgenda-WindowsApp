@@ -48,8 +48,9 @@ namespace eAgenda.WindowsApp
             this.cargoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tBCONTATOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tBCONTATOBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dBeAgendaDataSet = new eAgenda.WindowsApp.DBeAgendaDataSet();
+            this.tBCONTATOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -61,12 +62,11 @@ namespace eAgenda.WindowsApp
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.tBCONTATOTableAdapter = new eAgenda.WindowsApp.DBeAgendaDataSetTableAdapters.TBCONTATOTableAdapter();
             this.txtTelefone = new System.Windows.Forms.TextBox();
-            this.tBCONTATOBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgContato)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBeAgendaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBeAgendaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tBCONTATOBindingSource
@@ -233,15 +233,20 @@ namespace eAgenda.WindowsApp
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // tBCONTATOBindingSource1
+            // tBCONTATOBindingSource2
             // 
-            this.tBCONTATOBindingSource1.DataMember = "TBCONTATO";
-            this.tBCONTATOBindingSource1.DataSource = this.dBeAgendaDataSet;
+            this.tBCONTATOBindingSource2.DataMember = "TBCONTATO";
+            this.tBCONTATOBindingSource2.DataSource = this.dBeAgendaDataSet;
             // 
             // dBeAgendaDataSet
             // 
             this.dBeAgendaDataSet.DataSetName = "DBeAgendaDataSet";
             this.dBeAgendaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tBCONTATOBindingSource1
+            // 
+            this.tBCONTATOBindingSource1.DataMember = "TBCONTATO";
+            this.tBCONTATOBindingSource1.DataSource = this.dBeAgendaDataSet;
             // 
             // label6
             // 
@@ -369,11 +374,6 @@ namespace eAgenda.WindowsApp
             this.txtTelefone.Size = new System.Drawing.Size(67, 20);
             this.txtTelefone.TabIndex = 92;
             // 
-            // tBCONTATOBindingSource2
-            // 
-            this.tBCONTATOBindingSource2.DataMember = "TBCONTATO";
-            this.tBCONTATOBindingSource2.DataSource = this.dBeAgendaDataSet;
-            // 
             // FrmContato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,12 +406,13 @@ namespace eAgenda.WindowsApp
             this.Name = "FrmContato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Contato";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmContato_FormClosing);
             this.Load += new System.EventHandler(this.FrmContato_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgContato)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBeAgendaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBeAgendaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
