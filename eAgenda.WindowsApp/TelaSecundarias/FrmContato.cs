@@ -191,6 +191,21 @@ namespace eAgenda.WindowsApp
         {
             TelaPrincipal telaPrincipal = new TelaPrincipal();
             telaPrincipal.Show();
+        }     
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            lsCargo.Items.Clear();
+
+            List<Contato> contatos = controladorContato.SelecionarPorCargo(txtBuscaPorCargo.Text);
+
+            foreach (var item in contatos)
+            {
+                if (contatos!= null)
+                {
+                    lsCargo.Items.Add(item);
+                }
+            }
         }
     }
 }

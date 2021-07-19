@@ -62,6 +62,10 @@ namespace eAgenda.WindowsApp
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.tBCONTATOTableAdapter = new eAgenda.WindowsApp.DBeAgendaDataSetTableAdapters.TBCONTATOTableAdapter();
             this.txtTelefone = new System.Windows.Forms.TextBox();
+            this.lsCargo = new System.Windows.Forms.ListBox();
+            this.txtBuscaPorCargo = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgContato)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBCONTATOBindingSource2)).BeginInit();
@@ -186,7 +190,7 @@ namespace eAgenda.WindowsApp
             this.dgContato.Location = new System.Drawing.Point(26, 92);
             this.dgContato.Name = "dgContato";
             this.dgContato.ReadOnly = true;
-            this.dgContato.Size = new System.Drawing.Size(652, 191);
+            this.dgContato.Size = new System.Drawing.Size(652, 173);
             this.dgContato.TabIndex = 90;
             this.dgContato.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCompromisso_CellClick);
             // 
@@ -374,12 +378,58 @@ namespace eAgenda.WindowsApp
             this.txtTelefone.Size = new System.Drawing.Size(67, 20);
             this.txtTelefone.TabIndex = 92;
             // 
+            // lsCargo
+            // 
+            this.lsCargo.FormattingEnabled = true;
+            this.lsCargo.Location = new System.Drawing.Point(705, 105);
+            this.lsCargo.Name = "lsCargo";
+            this.lsCargo.Size = new System.Drawing.Size(251, 303);
+            this.lsCargo.TabIndex = 93;
+            // 
+            // txtBuscaPorCargo
+            // 
+            this.txtBuscaPorCargo.Location = new System.Drawing.Point(705, 52);
+            this.txtBuscaPorCargo.Name = "txtBuscaPorCargo";
+            this.txtBuscaPorCargo.Size = new System.Drawing.Size(176, 20);
+            this.txtBuscaPorCargo.TabIndex = 94;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Consolas", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Azure;
+            this.label7.Location = new System.Drawing.Point(701, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(180, 22);
+            this.label7.TabIndex = 95;
+            this.label7.Text = "Buscar por cargo:";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.White;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.Location = new System.Drawing.Point(897, 16);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(59, 64);
+            this.btnBuscar.TabIndex = 96;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // FrmContato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(704, 450);
+            this.ClientSize = new System.Drawing.Size(977, 450);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtBuscaPorCargo);
+            this.Controls.Add(this.lsCargo);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.dgContato);
             this.Controls.Add(this.label6);
@@ -451,5 +501,9 @@ namespace eAgenda.WindowsApp
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.BindingSource tBCONTATOBindingSource2;
+        private System.Windows.Forms.ListBox lsCargo;
+        private System.Windows.Forms.TextBox txtBuscaPorCargo;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
