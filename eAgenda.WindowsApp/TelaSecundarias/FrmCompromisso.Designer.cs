@@ -93,6 +93,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtLink
             // 
+            this.txtLink.Enabled = false;
             this.txtLink.Location = new System.Drawing.Point(424, 55);
             this.txtLink.Name = "txtLink";
             this.txtLink.Size = new System.Drawing.Size(217, 20);
@@ -139,6 +140,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtAssunto
             // 
+            this.txtAssunto.Enabled = false;
             this.txtAssunto.Location = new System.Drawing.Point(122, 16);
             this.txtAssunto.Name = "txtAssunto";
             this.txtAssunto.Size = new System.Drawing.Size(209, 20);
@@ -146,6 +148,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtLocal
             // 
+            this.txtLocal.Enabled = false;
             this.txtLocal.Location = new System.Drawing.Point(424, 19);
             this.txtLocal.Name = "txtLocal";
             this.txtLocal.Size = new System.Drawing.Size(217, 20);
@@ -166,6 +169,7 @@ namespace eAgenda.WindowsApp
             // 
             // tmInicio
             // 
+            this.tmInicio.Enabled = false;
             this.tmInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.tmInicio.Location = new System.Drawing.Point(320, 88);
             this.tmInicio.Name = "tmInicio";
@@ -174,6 +178,7 @@ namespace eAgenda.WindowsApp
             // 
             // dtData
             // 
+            this.dtData.Enabled = false;
             this.dtData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtData.Location = new System.Drawing.Point(92, 86);
             this.dtData.Name = "dtData";
@@ -208,6 +213,7 @@ namespace eAgenda.WindowsApp
             // 
             // tmTermino
             // 
+            this.tmTermino.Enabled = false;
             this.tmTermino.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.tmTermino.Location = new System.Drawing.Point(560, 88);
             this.tmTermino.Name = "tmTermino";
@@ -437,6 +443,7 @@ namespace eAgenda.WindowsApp
             this.cbContato.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tBCONTATOBindingSource, "Id", true));
             this.cbContato.DataSource = this.tBCONTATOBindingSource1;
             this.cbContato.DisplayMember = "Nome";
+            this.cbContato.Enabled = false;
             this.cbContato.FormattingEnabled = true;
             this.cbContato.Location = new System.Drawing.Point(122, 52);
             this.cbContato.Name = "cbContato";

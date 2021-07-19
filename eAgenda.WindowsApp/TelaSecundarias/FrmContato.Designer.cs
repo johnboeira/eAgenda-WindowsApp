@@ -118,6 +118,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtNome
             // 
+            this.txtNome.Enabled = false;
             this.txtNome.Location = new System.Drawing.Point(88, 16);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(218, 20);
@@ -125,6 +126,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtEmail
             // 
+            this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(420, 16);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(258, 20);
@@ -145,6 +147,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtCargo
             // 
+            this.txtCargo.Enabled = false;
             this.txtCargo.Location = new System.Drawing.Point(266, 52);
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Size = new System.Drawing.Size(137, 20);
@@ -165,6 +168,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtEmpresa
             // 
+            this.txtEmpresa.Enabled = false;
             this.txtEmpresa.Location = new System.Drawing.Point(506, 52);
             this.txtEmpresa.Name = "txtEmpresa";
             this.txtEmpresa.Size = new System.Drawing.Size(172, 20);
@@ -373,6 +377,7 @@ namespace eAgenda.WindowsApp
             // 
             // txtTelefone
             // 
+            this.txtTelefone.Enabled = false;
             this.txtTelefone.Location = new System.Drawing.Point(123, 52);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(67, 20);
